@@ -1,44 +1,55 @@
-<div main class="container">
+<div class="container">
   <form name="form" novalidate ng-submit="save()">
     <div class="row">
-      <div class="form-group form-group-sm">
+      <div class="form-group">
         <label class="control-label">
           Bookmark URL<span class="red">&nbsp;*</span>
         </label>
 
-        <input type="text" placeholder="Enter bookmark URL" name="url" ng-model="bookmark.url" required>
+        <div><input type="text" class="form-control"
+                    placeholder="Enter bookmark URL" name="url" ng-model="bookmark.url" required></div>
       </div>
     </div>
-    <div ng-show="form.url.$error.required">
-      <p class="has-error">Bookmark URL required</p>
+    <div class="row has-error" ng-show="submitted && form.url.$error.required">
+      Bookmark URL required
     </div>
+    <div class="row divider-hor"></div>
 
     <div class="row">
-      <div class="form-group form-group-sm">
+      <div class="form-group">
         <label class="control-label">
           Bookmark Title<span class="red">&nbsp;*</span>
         </label>
 
-        <input type="text" placeholder="Enter bookmark title" name="url" ng-model="bookmark.url" required>
+        <div><input type="text" class="form-control"
+                    placeholder="Enter bookmark title" name="title" ng-model="bookmark.title" required></div>
       </div>
     </div>
-    <div ng-show="form.url.$error.required">
-      <p class="has-error">Bookmark Title required</p>
+    <div class="row has-error" ng-show="submitted && form.title.$error.required">
+      Bookmark Title required
     </div>
+    <div class="row divider-hor"></div>
 
     <div class="row">
-      <div class="form-group form-group-sm">
+      <div class="form-group">
         <label class="control-label">
           Tags: (separated by commas)
         </label>
 
-        <input type="text" placeholder="Enter bookmarks tags" name="url" ng-model="bookmark.url" required>
+        <div><textarea placeholder="Enter bookmarks tags" name="tags" ng-model="bookmark.tags"
+                       class="form-control" rows="2"></textarea></div>
       </div>
     </div>
 
+
+    <div class="row has-error" ng-show="submitted && form.$invalid">
+      Fill all required fields
+    </div>
+    <div class="row divider-hor"></div>
+
     <div class="row">
-      <input type="submit" class="btn btn-success btn-lg">Save</input>
-      <button class="btn btn-default btn-lg" ng-click="cancel">Cancel</button>
+      <input type="submit" class="btn btn-success btn-lg" value="Save">
+      <button class="btn btn-default btn-lg" ng-click="cancel()">Cancel</button>
     </div>
   </form>
 </div>

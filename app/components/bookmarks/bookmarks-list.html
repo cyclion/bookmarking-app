@@ -1,29 +1,36 @@
-<div class="btn-group">
-  <button class="btn btn-primary" ng-click="addBookmark()"></button>
-  <button class="btn btn-default" ng-click="lastBookmark()" ng-disabled="!lastBookmark"></button>
+<div class="btn-group ">
+  <button class="btn btn-primary" ng-click="addBookmark()">Add bookmark</button>
+  <button class="btn btn-default" ng-click="lastBookmark()">Last bookmark</button>
 </div>
-
+<div class="row divider-hor"></div>
 <div class="row">
-  <div class="col-md-10">
-    <div class="large-text">
-      Filtered by Tag: <span ng-bind="tagNameText"></span> | <a href ng-click="clearFilter">Clear Filter</a>
+  <div class="col-md-10 well well-sm">
+    <div>{{selectedTag}}
+      Filtered by Tag: <span ng-bind="selectedTag ? selectedTag : 'NONE'"></span> | <a href ng-click="clearFilter()">Clear Filter</a>
     </div>
+    <div class="row divider-hor"></div>
     <div>
       <ul>
-        <li ng-repeat="bookmark in bookmarks | filter : tag as filteredBookmarks track by $index">
-          <button class="btn btn-sm btn-info" ng-click="editBookmark(bookmark)">Edit</button>
-          <button class="btn btn-sm btn-danger" ng-click="deleteBookmark(bookmark)">Edit</button>
+        <li ng-repeat="bookmark in bookmarks | filter : {tags: selectedTag} track by bookmark.id">
+          <button class="btn btn-sm btn-info" ng-click="editBookmark(bookmark.id)">Edit</button>
+          <button class="btn btn-sm btn-danger" ng-click="removeBookmark(bookmark)">Delete</button>
+          <span ng-bind="bookmark.title"></span>
+          &nbsp;(<a href="{{::bookmark.url}}" target="_blank" ng-bind="::bookmark.url"></a>)
+          &nbsp;|&nbsp;<span ng-bind="bookmark.tags"></span>
         </li>
       </ul>
     </div>
   </div>
 
-  <div class="col-md-2">
+  <div class="col-md-2 well well-sm">
     <div>Bookmark's Tags</div>
     <div>
       <ul>
-        <li ng-repeat="tag in ">
-
+        <li ng-repeat="tag in tags track by tag.name">
+          <a href="javascript:void(0)" ng-click="selectTag(tag.name)">
+            <span ng-bind="tag.name"></span>
+            &nbsp;(<span ng-bind="tag.count"></span>)
+          </a>
         </li>
       </ul>
     </div>
