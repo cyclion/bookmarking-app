@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bookmarksStorageModule', [])
-  .service('bookmarksStorage', function (localStorageService, guidGenerator, tagsFilterFilter) {
+  .service('bookmarksStorage', ['localStorageService', 'guidGenerator', 'tagsFilterFilter', function (localStorageService, guidGenerator, tagsFilterFilter) {
     var storage = this;
 
     storage.list = [];
@@ -48,5 +48,5 @@ angular.module('bookmarksStorageModule', [])
     storage.setLastBookmarkId = function (id) {
       localStorageService.set('lastBookmarkId', id);
     };
-  })
+  }])
 ;

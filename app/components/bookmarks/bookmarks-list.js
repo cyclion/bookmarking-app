@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bookmarksListModule', [])
-  .directive('bookmarksList', function($state, bookmarksStorage) {
+  .directive('bookmarksList', ['$state', 'bookmarksStorage',function($state, bookmarksStorage) {
     return {
       templateUrl: 'app/components/bookmarks/bookmarks-list.html',
       link: function(scope, element, attributes) {
@@ -34,5 +34,5 @@ angular.module('bookmarksListModule', [])
         }
       }
     };
-  })
+  }])
 ;

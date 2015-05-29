@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bookmarkEditModule', [])
-  .directive('bookmarkEdit', function ($state, $stateParams, bookmarksStorage) {
+  .directive('bookmarkEdit', ['$state', '$stateParams', 'bookmarksStorage',function ($state, $stateParams, bookmarksStorage) {
     return {
       templateUrl: 'app/components/edit/bookmark-edit.html',
       link: function (scope, element, attributes) {
@@ -40,5 +40,5 @@ angular.module('bookmarkEditModule', [])
         };
       }
     };
-  })
+  }])
 ;
