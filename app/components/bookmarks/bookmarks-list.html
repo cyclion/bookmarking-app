@@ -1,0 +1,31 @@
+<div class="btn-group">
+  <button class="btn btn-primary" ng-click="addBookmark()"></button>
+  <button class="btn btn-default" ng-click="lastBookmark()" ng-disabled="!lastBookmark"></button>
+</div>
+
+<div class="row">
+  <div class="col-md-10">
+    <div class="large-text">
+      Filtered by Tag: <span ng-bind="tagNameText"></span> | <a href ng-click="clearFilter">Clear Filter</a>
+    </div>
+    <div>
+      <ul>
+        <li ng-repeat="bookmark in bookmarks | filter : tag as filteredBookmarks track by $index">
+          <button class="btn btn-sm btn-info" ng-click="editBookmark(bookmark)">Edit</button>
+          <button class="btn btn-sm btn-danger" ng-click="deleteBookmark(bookmark)">Edit</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-md-2">
+    <div>Bookmark's Tags</div>
+    <div>
+      <ul>
+        <li ng-repeat="tag in ">
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

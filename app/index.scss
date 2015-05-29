@@ -1,0 +1,25 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #000;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.body {
+  background: magenta;
+}
+
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+
+
+/* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
+   all your sass files automatically */
+// injector
+// endinjector
